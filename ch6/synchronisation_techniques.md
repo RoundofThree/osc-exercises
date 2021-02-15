@@ -1,7 +1,7 @@
 ## Synchronisation techniques
 
 1. Semaphores (counting semaphores or binary semaphores (mutex locks))
-2. Monitors 
+2. Monitors (Java monitor uses signal-and-continue)
 3. ReentrantLock 
 4. Condition variables of locks 
 
