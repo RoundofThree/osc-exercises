@@ -3,6 +3,7 @@ package ch6;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class ReaderWriterSimulator {
     public static void main(String[] args) {
@@ -282,5 +283,24 @@ class LockDatabase implements ReadWriteLock {
             else canWrite.signal();
         } finally {key.unlock();}
     }
+}
 
+// -------------------Using Java ReentrantReadWriteLock
+class RWLockDatabase implements ReadWriteLock {
+    ReentrantReadWriteLock k;
+    public RWLockDatabase() {
+        k = new ReentrantReadWriteLock();
+    }
+    public void acquireReadLock() throws InterruptedException {
+        k.readLock().lock();
+    }
+    public void acquireWriteLock() throws InterruptedException {
+        k.writeLock().lock();
+    }
+    public void releaseReadLock() throws InterruptedException {
+        k.readLock().unlock();
+    }
+    public void releaseWriteLock() throws InterruptedException {
+        k.writeLock().unlock();
+    }
 }
