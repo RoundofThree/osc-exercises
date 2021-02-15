@@ -1,5 +1,5 @@
 default:
-	gcc -o main.o main.c pid_manager.c
+	gcc -pthread -o main.o main.c
 
 clean:
 	rm *.o

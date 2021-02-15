@@ -1,8 +1,6 @@
 #define MIN_PID 300
 #define MAX_PID 5000
-#define PID_LEN MAX_PID - MIN_PID + 1
-
-int PID[MAX_PID-MIN_PID];
+#define PID_RANGE MAX_PID - MIN_PID
 
 /* 
 Creates and initializes a data structure for representing pids; 
@@ -12,7 +10,7 @@ int allocate_map(void);
 
 /*
 Allocates and returns a pid;
-returns 1 if unable to allocate a pid (all pids are in use)
+returns -1 if unable to allocate a pid (all pids are in use)
 */
 int allocate_pid(void);
 
